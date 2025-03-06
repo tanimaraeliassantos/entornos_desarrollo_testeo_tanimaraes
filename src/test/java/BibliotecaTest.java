@@ -6,12 +6,18 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Esta clase contiene tests unitarios para la clase Biblioteca.
+ */
 public class BibliotecaTest {
 
     private Biblioteca biblioteca;
     private Libro libro1;
     private Libro libro2;
 
+    /**
+     * Configura una Biblioteca y libros de prueba antes de cada test.
+     */
     @BeforeEach
     void setUp() {
         biblioteca = new Biblioteca();
@@ -19,12 +25,20 @@ public class BibliotecaTest {
         libro2 = new Libro("Don Quijote de la Mancha", "Miguel de Cervantes", 1605);
     }
 
+    /**
+     * Test para el método agregarLibro() de la clase Biblioteca.
+     * Verifica que el método agrega un libro correctamente a la biblioteca.
+     */
     @Test
     void testAgregarLibro() {
         assertTrue(biblioteca.agregarLibro(libro1));
         assertTrue(biblioteca.getLibros().contains(libro1));
     }
 
+    /**
+     * Test para el método eliminarLibro() de la clase Biblioteca.
+     * Verifica que el método elimina un libro correctamente de la biblioteca.
+     */
     @Test
     void testEliminarLibro() {
         biblioteca.agregarLibro(libro1);
@@ -32,6 +46,10 @@ public class BibliotecaTest {
         assertFalse(biblioteca.getLibros().contains(libro1));
     }
 
+    /**
+     * Test para el método encuentraLibrosPorAutor() de la clase Biblioteca.
+     * Verifica que el método encuentra libros por autor cuando el autor existe.
+     */
     @Test
     void testEncuentraLibrosPorAutor_AutorExiste() {
         biblioteca.agregarLibro(libro1);
@@ -40,6 +58,10 @@ public class BibliotecaTest {
         assertNotNull(librosEncontrados);
     }
 
+    /**
+     * Test para el método encuentraLibrosPorAutor() de la clase Biblioteca.
+     * Verifica que el método devuelve null cuando el autor no existe.
+     */
     @Test
     void testEncuentraLibrosPorAutor_AutorNoExiste() {
         List<Libro> librosEncontrados = biblioteca.encuentraLibrosPorAutor("Jorge Amado");
