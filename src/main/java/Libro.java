@@ -1,5 +1,6 @@
 /**
  * Esta clase representa un libro con título, autor y año de publicación.
+ * @author Tanimara Elias Santos
  */
 public class Libro {
 
