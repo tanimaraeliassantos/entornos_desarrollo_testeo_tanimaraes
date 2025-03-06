@@ -1,44 +1,68 @@
-//package biblioteca;
-
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Esta clase representa una Biblioteca que gestiona una colección de libros.
+ */
 public class Biblioteca {
 
-    // TODO: Documentar estos atributos
+    /**
+     * Lista de libros en la biblioteca.
+     */
     private final List<Libro> libros;
 
-    // TODO: Documentar este método
+    /**
+     * Constructor por defecto de la Biblioteca.
+     * Inicializa una lista vacía de libros.
+     */
     public Biblioteca() {
         libros = new ArrayList<>();
     }
 
-    // TODO: Documentar este método.
-    //  Test: NO HAY QUE TESTEAR ESTE METODO
+    /**
+     * Constructor de la Biblioteca que acepta una lista inicial de libros.
+     *
+     * @param libros La lista inicial de libros.
+     */
     public Biblioteca(List<Libro> libros) {
         this.libros = libros;
     }
 
-    // TODO: Testear este metodo.
-    //  Test: Comprobar si se ha agregado
+    /**
+     * Agrega un libro a la biblioteca.
+     *
+     * @param libro El libro a agregar.
+     * @return true si el libro se agregó correctamente, false en caso contrario.
+     */
     public boolean agregarLibro(Libro libro) {
         return libros.add(libro);
     }
 
-    // TODO: Testear este metodo.
-    //  Test: comprobar si se ha eliminado
+    /**
+     * Elimina un libro de la biblioteca.
+     *
+     * @param libro El libro a eliminar.
+     * @return true si el libro se eliminó correctamente, false en caso contrario.
+     */
     public boolean eliminarLibro(Libro libro) {
         return libros.remove(libro);
     }
 
-    // TODO: Documentar este método
+    /**
+     * Obtiene la lista de libros en la biblioteca.
+     *
+     * @return La lista de libros.
+     */
     public List<Libro> getLibros() {
         return libros;
     }
 
-    // TODO: Documentar este método.
-    //  Test 01: buscar libro existente y comprobar que lo localiza.
-    //  Test 02: buscar libro NO existente y comprobar que no lo localiza.
+    /**
+     * Busca un libro por su título en la biblioteca.
+     *
+     * @param titulo El título del libro a buscar.
+     * @return El libro encontrado, o null si no se encuentra.
+     */
     public Libro encuentraLibroPorTitulo(String titulo) {
         for (Libro libro : libros) {
             if (libro.getTitulo().equals(titulo)) {
@@ -48,12 +72,14 @@ public class Biblioteca {
         return null;
     }
 
-    // TODO: Documentar este metodo.
-    //  No testearlo
-    // Este metodo está obsoleto. Hay que documentarlo como tal.
-    //  Recuerda: las anotaciones @deprecated y @link a la nueva
-    //  versión mejorada encuentraLibrosPorAutor(...)
-    //  En esta ocasión, NO TESTEAREMOS este metodo
+    /**
+     * Busca un libro por su autor en la biblioteca.
+     *
+     * @param autor El autor del libro a buscar.
+     * @return El libro encontrado, o null si no se encuentra.
+     * @deprecated Este método está obsoleto. Use {@link #encuentraLibrosPorAutor(String)} en su lugar.
+     */
+    @Deprecated
     public Libro encuentaLibroPorAutor(String autor) {
         for (Libro libro : libros) {
             if (libro.getAutor().equals(autor)) {
@@ -63,12 +89,13 @@ public class Biblioteca {
         return null;
     }
 
-    // TODO: Documentar este metodo
-    // Este metodo sustituye al metodo anterior. Está disponible desde la
-    //  versión 2.0. Hay que documentarlo teniéndolo en cuenta.
-    // TODO: Testear este metodo.
-    //  Test: Comprobar la lista de libros que devuelve para un autor existentes.
-    //  Test: Comprobar la lista de libros que devuelve para un autor No existente
+    /**
+     * Busca libros por su autor en la biblioteca.
+     *
+     * @param autor El autor de los libros a buscar.
+     * @return Una lista de libros encontrados, o null si no se encuentra ninguno.
+     * @since 2.0
+     */
     public List<Libro> encuentraLibrosPorAutor(String autor) {
         List<Libro> listaLibros = null;
         for (Libro libro : libros) {
@@ -82,4 +109,3 @@ public class Biblioteca {
         return listaLibros;
     }
 }
-
